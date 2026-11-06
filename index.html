@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>E-Waste Debate｜學生講稿準備室</title>
+<style>
+:root{
+  --green:#196454;
+  --dark:#193d35;
+  --background:#f1f5ef;
+  --line:#d7e2d5;
+}
+*{box-sizing:border-box}
+body{
+  margin:0;
+  background:var(--background);
+  color:var(--dark);
+  font-family:Arial,"Noto Sans TC",sans-serif;
+  line-height:1.8;
+}
+header{
+  padding:36px 22px;
+  background:var(--dark);
+  color:white;
+}
+header>div,main{max-width:950px;margin:auto}
+header small{color:#bfdfbe;letter-spacing:2px}
+h1{margin:12px 0;font-size:clamp(27px,5vw,40px)}
+header p{margin:6px 0}
+main{padding:20px}
+section{
+  background:white;
+  border:1px solid var(--line);
+  border-radius:16px;
+  padding:24px;
+  margin:18px 0;
+}
+h2{font-size:23px;margin:0 0 10px}
+h3{font-size:18px}
+label{display:block;font-weight:bold;margin:16px 0 6px}
+input,select,textarea,button{font:inherit}
+input,select,textarea{
+  width:100%;
+  padding:12px;
+  border:1px solid #b4c8b0;
+  border-radius:9px;
+  background:white;
+  color:var(--dark);
+}
+textarea{min-height:105px;resize:vertical}
+button{
+  border:0;
+  border-radius:9px;
+  padding:12px 18px;
+  background:var(--green);
+  color:white;
+  cursor:pointer;
+}
+button.secondary{background:#e5eee1;color:var(--dark)}
+button:disabled{opacity:.5;cursor:not-allowed}
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+  gap:18px;
+}
+.hint{font-size:14px;color:#5d705b}
+.example{
+  background:#edf5e8;
+  padding:14px 16px;
+  border-radius:9px;
+}
+.notice{
+  padding:14px 18px;
+  background:#fff4d8;
+  border-radius:9px;
+  font-size:14px;
+}
+.actions{display:flex;flex-wrap:wrap;gap:10px;margin:18px 0}
+.pill{
+  display:inline-block;
+  padding:4px 12px;
+  background:#e6f0df;
+  border-radius:30px;
+}
+#status{
+  position:sticky;
+  top:0;
+  z-index:5;
+  padding:10px 20px;
+  background:#e2eedb;
+}
+#finalScript{
+  min-height:480px;
+  line-height:1.9;
+}
+#printText{
+  display:none;
+  white-space:pre-wrap;
+  overflow-wrap:anywhere;
+  font:inherit;
+}
+details{margin:14px 0}
+summary{cursor:pointer;font-weight:bold}
+@media print{
+  header,#status,.no-print,.preparation{display:none!important}
+  body{background:white;color:black}
+  main{max-width:none;padding:0}
+  #finalSection{border:0;padding:0;margin:0}
+  #finalScript{display:none}
+  #printText{display:block}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div>
+    <small>STUDENT WORKSPACE · A1–A2 ENGLISH</small>
+    <h1>E-Waste Debate</h1>
+    <p>學生英文講稿準備室</p>
+    <p>Who should take responsibility for e-waste?</p>
+  </div>
+</header>
+
+<div id="status" role="status" aria-live="polite">
+  選擇你的角色，跟著提示準備英文講稿。
+</div>
+
+<main>
+  <div class="notice no-print">
+    不需登入或驗證碼。資料只保存在目前瀏覽器，不會傳送給老師。
+    完成後可下載文字檔，或列印／另存 PDF。
+    建議每組使用一台裝置，並定期下載備份。
+  </div>
+
+  <section class="preparation">
+    <h2>Start｜我們是哪一組？</h2>
+    <div class="grid">
+      <div>
+        <label for="teamName">班級與組別</label>
+        <input id="teamName" maxlength="100"
+          placeholder="例如：101 班，第 2 組">
+      </div>
+      <div>
+        <label for="role">辯論角色</label>
+        <select id="role">
+          <option value="">請選擇老師分配的角色</option>
+          <option value="Government">Government｜政府</option>
+          <option value="Company">Company｜企業</option>
+          <option value="Consumer">Consumer｜消費者</option>
+        </select>
+      </div>
+    </div>
+
+    <p id="roleHint" class="example">
+      請選擇角色，查看你們可以討論的方向。
+    </p>
+    <p class="hint">
+      角色由老師分配，本頁不提供抽籤。提示是討論方向，不是影片證據。
+    </p>
+
+    <label for="level">我需要的英文提示</label>
+    <select id="level">
+      <option value="basic">Basic｜短句與填空</option>
+      <option value="guided">Guided｜連結理由與證據</option>
+      <option value="challenge">Challenge｜加入限制與合作</option>
+    </select>
+
+    <label for="speaker">發言者／分工，可留空</label>
+    <input id="speaker" maxlength="200"
+      placeholder="Opening: No. 01 / Evidence: No. 05 / Rebuttal: No. 12">
+  </section>
+
+  <section class="preparation">
+    <h2>1｜Our Claim 我們的主張</h2>
+    <p>你們認為誰應該採取什麼行動？為什麼？</p>
+    <p id="claimHint" class="example"></p>
+
+    <label for="claim">主張與理由，請寫英文</label>
+    <textarea id="claim" maxlength="1500"
+      placeholder="We believe companies should provide longer software support because people can use their phones longer."></textarea>
+
+    <details>
+      <summary>可使用的字詞</summary>
+      <p>
+        make rules 制定規範 · repair phones 維修手機 ·
+        provide updates 提供更新 · protect data 保護資料 ·
+        recycle safely 安全回收 · use phones longer 延長手機使用時間
+      </p>
+    </details>
+  </section>
+
+  <section class="preparation">
+    <h2>2｜Our Evidence 影片證據</h2>
+    <p>找出兩項不同的影片線索，並解釋它們為什麼支持主張。</p>
+    <p class="hint">
+      請寫影片真的出現的內容。沒有提供的數字不要自行補上。
+      下方句型只是英文提示，不代表影片事實。
+    </p>
+
+    <div class="grid">
+      <div>
+        <h3>Evidence 1｜證據一</h3>
+        <label for="source1">影片名稱與時間</label>
+        <input id="source1" maxlength="500"
+          placeholder="例如：影片名稱，00:35">
+
+        <p id="evidenceHint1" class="example"></p>
+        <label for="evidence1">你看到或聽到什麼？請寫英文</label>
+        <textarea id="evidence1" maxlength="1500"
+          placeholder="In the video, we see ..."></textarea>
+
+        <label for="why1">這如何支持主張？請寫英文</label>
+        <textarea id="why1" maxlength="1500"
+          placeholder="This supports our claim because ..."></textarea>
+      </div>
+
+      <div>
+        <h3>Evidence 2｜證據二</h3>
+        <label for="source2">影片名稱與時間</label>
+        <input id="source2" maxlength="500"
+          placeholder="例如：影片名稱，01:10">
+
+        <p id="evidenceHint2" class="example"></p>
+        <label for="evidence2">另一項不同線索，請寫英文</label>
+        <textarea id="evidence2" maxlength="1500"
+          placeholder="The video also shows ..."></textarea>
+
+        <label for="why2">這如何支持主張？請寫英文</label>
+        <textarea id="why2" maxlength="1500"
+          placeholder="This is important because ..."></textarea>
+      </div>
+    </div>
+  </section>
+
+  <section class="preparation">
+    <h2>3｜Our Response 回應不同意見</h2>
+    <p id="opposition" class="example">選擇角色後顯示可能的質疑。</p>
+
+    <label for="opponent">對方可能怎麼說？請寫英文</label>
+    <textarea id="opponent" maxlength="1500"
+      placeholder="Some people may say ..."></textarea>
+
+    <p id="rebuttalHint" class="example"></p>
+
+    <label for="rebuttal">我們如何回應？請寫英文</label>
+    <textarea id="rebuttal" maxlength="1500"
+      placeholder="We understand your point, but ..."></textarea>
+  </section>
+
+  <section class="preparation">
+    <h2>4｜Our Question 問對方一個問題</h2>
+    <p>問一個能讓對方解釋做法、成本或責任的問題。</p>
+    <div class="example">
+      How can you help people ___?<br>
+      Who will pay for ___?<br>
+      What can you do to ___?
+    </div>
+
+    <label for="question">英文問題</label>
+    <textarea id="question" maxlength="1000"
+      placeholder="Who will pay for the repair?"></textarea>
+  </section>
+
+  <section class="preparation">
+    <h2>5｜Our Closing 結語</h2>
+    <p>再說一次最重要的行動，或提出三方合作的方式。</p>
+    <p id="closingHint" class="example"></p>
+
+    <label for="closing">英文結語</label>
+    <textarea id="closing" maxlength="1500"
+      placeholder="We can work together to reduce e-waste."></textarea>
+
+    <div class="actions">
+      <button id="buildButton">整理成英文講稿 ↓</button>
+      <button id="saveButton" class="secondary">儲存目前內容</button>
+    </div>
+    <p id="progress" class="pill"></p>
+    <p class="hint">
+      整理功能只組合你們填寫的內容，不會翻譯、查證或自動補上證據。
+    </p>
+  </section>
+
+  <section id="finalSection">
+    <h2>Our Debate Script｜我們的英文講稿</h2>
+    <p id="finalHeading"></p>
+
+    <div class="no-print">
+      <p>可以直接修改下方講稿。修改後，記得儲存或下載。</p>
+      <p class="hint">
+        上方答案改動後，講稿不會自動更新；
+        請重新按「整理成英文講稿」，或直接修改這一欄。
+      </p>
+    </div>
+
+    <label for="finalScript" class="no-print">可編輯的完整講稿</label>
+    <textarea id="finalScript"
+      placeholder="完成上方內容後，按「整理成英文講稿」。"></textarea>
+    <pre id="printText"></pre>
+
+    <div class="actions no-print">
+      <button id="saveFinalButton">儲存講稿</button>
+      <button id="downloadButton">下載講稿 TXT</button>
+      <button id="printButton" class="secondary">列印／另存 PDF</button>
+    </div>
+
+    <div class="example no-print">
+      <strong>練習前檢查</strong><br>
+      □ 我們的主張清楚。<br>
+      □ 有兩項不同的影片證據與來源。<br>
+      □ 有解釋證據如何支持主張。<br>
+      □ 有回應另一方，而不只是說不同意。<br>
+      □ 每位發言者都知道自己的段落。
+    </div>
+
+    <details class="no-print">
+      <summary>辯論時忘詞或沒聽懂，可以說……</summary>
+      <p>
+        Please give me a moment.｜請給我一點時間。<br>
+        Please say that again.｜請再說一次。<br>
+        Do you mean ___?｜你的意思是……嗎？<br>
+        Our main point is ___.｜我們的重點是……。<br>
+        Let me explain.｜讓我說明。
+      </p>
+    </details>
+  </section>
+</main>
+
+<script>
+"use strict";
+
+const $ = id => document.getElementById(id);
+const STORAGE_KEY = "ewaste-student-script-only-v1";
+
+const fieldIds = [
+  "teamName","role","level","speaker",
+  "claim",
+  "source1","evidence1","why1",
+  "source2","evidence2","why2",
+  "opponent","rebuttal","question","closing",
+  "finalScript"
+];
+
+let dirty = false;
+let storageAvailable = true;
+
+const roleHints = {
+  Government:
+    "Government｜政府：可以討論法規、回收制度與執行。想一想：誰負責執行？經費從哪裡來？",
+  Company:
+    "Company｜企業：可以討論產品設計、維修、更新與回收服務。想一想：如何負擔成本？",
+  Consumer:
+    "Consumer｜消費者：可以討論延長使用、維修與回收選擇。想一想：資訊和服務是否容易取得？"
+};
+
+const oppositionHints = {
+  Government:
+    "可能的質疑：New rules cost too much.｜新規範成本太高。你們會如何回應？",
+  Company:
+    "可能的質疑：Repair is too expensive.｜維修太昂貴。你們會如何回應？",
+  Consumer:
+    "可能的質疑：People always want new phones.｜大家總想換新手機。你們會如何回應？"
+};
+
+const scaffolds = {
+  basic: {
+    claim:"We think ___ should ___. This can help ___.",
+    evidence1:"In the video, we see ___.",
+    evidence2:"We also see ___.",
+    rebuttal:"We understand, but ___.",
+    closing:"Please ___. We can help by ___."
+  },
+  guided: {
+    claim:"We believe ___ should take responsibility because ___.",
+    evidence1:"According to the video, ___. This shows ___.",
+    evidence2:"The video also shows ___. This is important because ___.",
+    rebuttal:"We understand your point, but ___. Our evidence shows ___.",
+    closing:"For these reasons, we think ___ should ___."
+  },
+  challenge: {
+    claim:"Although ___, we believe ___ should ___ because ___.",
+    evidence1:"The video shows ___. This supports our claim because ___.",
+    evidence2:"Another example is ___. It suggests ___.",
+    rebuttal:"We agree that ___. However, ___. One possible solution is ___.",
+    closing:"No group can solve this alone. We can work together by ___."
+  }
+};
+
+function message(text){
+  $("status").textContent = text;
+}
+
+function collect(){
+  return Object.fromEntries(
+    fieldIds.map(id => [id, $(id).value])
+  );
+}
+
+function updateHints(){
+  const role = $("role").value;
+  const hints = scaffolds[$("level").value] || scaffolds.basic;
+
+  $("roleHint").textContent =
+    roleHints[role] || "請選擇角色，查看你們可以討論的方向。";
+
+  $("opposition").textContent =
+    oppositionHints[role] || "選擇角色後顯示可能的質疑。";
+
+  $("claimHint").textContent = hints.claim;
+  $("evidenceHint1").textContent = hints.evidence1;
+  $("evidenceHint2").textContent = hints.evidence2;
+  $("rebuttalHint").textContent = hints.rebuttal;
+  $("closingHint").textContent = hints.closing;
+}
+
+function updateHeading(){
+  const parts = [
+    $("teamName").value.trim(),
+    $("role").value,
+    $("speaker").value.trim()
+  ].filter(Boolean);
+
+  $("finalHeading").textContent = parts.join(" ｜ ");
+}
+
+function updateProgress(){
+  const has = id => Boolean($(id).value.trim());
+
+  const tasks = [
+    has("role") && has("claim"),
+    has("source1") && has("evidence1") && has("why1") &&
+      has("source2") && has("evidence2") && has("why2"),
+    has("opponent") && has("rebuttal"),
+    has("question"),
+    has("closing")
+  ];
+
+  $("progress").textContent =
+    "內容準備進度：" + tasks.filter(Boolean).length + " / 5";
+
+  updateHeading();
+}
+
+function updatePrint(){
+  updateHeading();
+  $("printText").textContent = $("finalScript").value;
+}
+
+function save(){
+  updatePrint();
+
+  try{
+    localStorage.setItem(
+      STORAGE_KEY,
+      JSON.stringify(collect())
+    );
+
+    storageAvailable = true;
+    dirty = false;
+    message("已儲存在目前瀏覽器。建議另下載 TXT 備份。");
+    return true;
+  }catch(error){
+    storageAvailable = false;
+    message("此瀏覽器無法儲存，請下載 TXT 備份；目前文字仍可編輯。");
+    return false;
+  }
+}
+
+function restore(){
+  try{
+    const raw = localStorage.getItem(STORAGE_KEY);
+    if(!raw) return;
+
+    const saved = JSON.parse(raw);
+
+    if(!saved || typeof saved !== "object"){
+      throw new Error("Invalid saved data");
+    }
+
+    fieldIds.forEach(id => {
+      if(typeof saved[id] === "string"){
+        $(id).value = saved[id];
+      }
+    });
+
+    if(!["","Government","Company","Consumer"].includes($("role").value)){
+      $("role").value = "";
+    }
+
+    if(!scaffolds[$("level").value]){
+      $("level").value = "basic";
+    }
+
+    message("已載入這台瀏覽器先前儲存的內容。");
+  }catch(error){
+    storageAvailable = false;
+    message("無法讀取先前資料，可直接開始；完成後請下載 TXT。");
+  }
+}
+
+$("buildButton").onclick = function(){
+  const required = [
+    ["role","辯論角色"],
+    ["claim","主張"],
+    ["source1","證據一的來源"],
+    ["evidence1","證據一"],
+    ["why1","證據一的支持理由"],
+    ["source2","證據二的來源"],
+    ["evidence2","證據二"],
+    ["why2","證據二的支持理由"],
+    ["opponent","對方可能的意見"],
+    ["rebuttal","我們的回應"],
+    ["question","英文問題"],
+    ["closing","英文結語"]
+  ];
+
+  const missing = required.filter(([id]) => !$(id).value.trim());
+
+  if(missing.length){
+    message(
+      "請先補上：" + missing.map(item => item[1]).join("、")
+    );
+    $(missing[0][0]).focus();
+    return;
+  }
+
+  if(
+    $("finalScript").value.trim() &&
+    !confirm("重新整理會取代目前講稿，包括你手動修改的內容。確定嗎？")
+  ){
+    return;
+  }
+
+  const value = id => $(id).value.trim();
+
+  $("finalScript").value =
+`Hello everyone. We are the ${value("role")} group.
+
+${value("claim")}
+
+Here is our first piece of evidence.
+${value("evidence1")}
+Source: ${value("source1")}
+${value("why1")}
+
+Here is our second piece of evidence.
+${value("evidence2")}
+Source: ${value("source2")}
+${value("why2")}
+
+Now, let us consider another view.
+${value("opponent")}
+
+Here is our response.
+${value("rebuttal")}
+
+Our question is:
+${value("question")}
+
+To conclude:
+${value("closing")}
+
+Thank you for listening.`;
+
+  dirty = true;
+  updatePrint();
+
+  const saved = save();
+
+  if(saved){
+    message("英文講稿已整理並儲存。請檢查內容，再開始練習。");
+  }
+
+  $("finalSection").scrollIntoView({
+    behavior:"smooth",
+    block:"start"
+  });
+};
+
+$("saveButton").onclick = save;
+$("saveFinalButton").onclick = save;
+
+$("downloadButton").onclick = function(){
+  const script = $("finalScript").value.trim();
+
+  if(!script){
+    message("目前沒有講稿，請先整理或直接填寫下方講稿欄。");
+    $("finalScript").focus();
+    return;
+  }
+
+  updateHeading();
+
+  const content =
+    "E-Waste Debate Script\n" +
+    $("finalHeading").textContent +
+    "\n\n" +
+    script;
+
+  const blob = new Blob(
+    ["\uFEFF", content],
+    {type:"text/plain;charset=utf-8"}
+  );
+
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement("a");
+
+  link.href = url;
+  link.download = "E-Waste-Debate-Script.txt";
+  document.body.append(link);
+  link.click();
+  link.remove();
+
+  setTimeout(() => URL.revokeObjectURL(url), 10000);
+
+  message("已要求下載講稿，請確認瀏覽器的下載結果。");
+};
+
+$("printButton").onclick = function(){
+  if(!$("finalScript").value.trim()){
+    message("目前沒有講稿，請先整理或填寫講稿。");
+    return;
+  }
+
+  updatePrint();
+  window.print();
+};
+
+fieldIds.forEach(id => {
+  const element = $(id);
+  const eventName = element.tagName === "SELECT" ? "change" : "input";
+
+  element.addEventListener(eventName, function(){
+    dirty = true;
+    updateHints();
+    updateProgress();
+    updatePrint();
+
+    message(
+      storageAvailable
+        ? "有尚未儲存的修改，請按儲存或下載講稿。"
+        : "目前內容尚未備份，請下載 TXT。"
+    );
+  });
+});
+
+window.addEventListener("beforeunload", function(event){
+  if(dirty){
+    event.preventDefault();
+    event.returnValue = "";
+  }
+});
+
+restore();
+updateHints();
+updateProgress();
+updatePrint();
+</script>
+</body>
+</html>
